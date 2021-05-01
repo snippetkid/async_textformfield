@@ -1,10 +1,18 @@
 # Async TextFormField
 
-A text form field with an async validator support.
+A text form field which lets you validate the entered text from an async service call.
+
+![](demo.gif)
 
 ## Usage
 
 ```dart
+
+Future<bool> isValidPasscode(String value) async {
+    return await Future.delayed(Duration(seconds: 2),
+        () => value.isNotEmpty && value.toLowerCase() == 'batman');
+}
+
 @override
 Widget build(BuildContext context) {
     return Scaffold(
