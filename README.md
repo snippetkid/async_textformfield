@@ -2,7 +2,7 @@
 
 A text form field which lets you validate the entered text from an async service call.
 
-![](demo.gif)
+![](https://user-images.githubusercontent.com/16718733/116789385-2eca6b00-aacc-11eb-96a4-9762c447ffd0.gif)
 
 ## Usage
 
