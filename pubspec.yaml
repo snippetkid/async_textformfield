@@ -1,7 +1,7 @@
 name: async_textformfield
 description: A text form field with an async validator
 version: 2.0.0+3
-homepage: https://github.com/snippetkid/async_textformfield
+homepage: https://github.com/anycode/async_textformfield
 
 environment:
   sdk: ">=2.12.0 <3.0.0"

@@ -8,33 +8,33 @@ A text form field which lets you validate the entered text from an async service
 
 ```dart
 
-Future<bool> isValidPasscode(String value) async {
-    return await Future.delayed(Duration(seconds: 2),
-        () => value.isNotEmpty && value.toLowerCase() == 'batman');
+Future<String?> isValidPasscode(String value) async {
+  return await Future.delayed(Duration(seconds: 2), 
+          () => value.isNotEmpty && value.toLowerCase() == 'batman' ? null : 'wrong password');
 }
 
 @override
 Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Center(
-          child: Form(
-              child: Center(
+  return Scaffold(
+    appBar: AppBar(
+      title: Text(widget.title),
+    ),
+    body: Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Center(
+        child: Form(
+          child: Center(
             child: AsyncTextFormField(
               controller: controller,
               validationDebounce: Duration(milliseconds: 500),
               validator: isValidPasscode,
-              hintText: 'Enter the Passcode',
+              decoration: InputDecoration(hintText: 'Enter the Passcode'),
             ),
-          )),
+          ),
         ),
       ),
-    );
-  }
+    ),
+  );
 }
 ```
 
