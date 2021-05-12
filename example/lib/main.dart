@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
@@ -30,8 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController controller = TextEditingController();
 
   Future<bool> isValidPasscode(String value) async {
-    return await Future.delayed(Duration(seconds: 2),
-        () => value.isNotEmpty && value.toLowerCase() == 'batman');
+    return await Future.delayed(Duration(seconds: 2), () => value.isNotEmpty && value.toLowerCase() == 'batman');
   }
 
   @override
@@ -50,8 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
               validationDebounce: Duration(milliseconds: 500),
               validator: isValidPasscode,
               hintText: 'Enter the Passcode',
-              isValidatingMessage:
-                  'Comparing with the hash from a secure server..',
+              isValidatingMessage: 'Comparing with the hash from a secure server..',
               valueIsInvalidMessage: 'Nope, Try harder..',
               valueIsEmptyMessage: 'No one sets an empty passcode!',
             ),
