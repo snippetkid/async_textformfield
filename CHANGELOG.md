@@ -1,3 +1,7 @@
+## 2.0.0+3
+
+* Null safety
+
 ## 1.0.0+2
 
 * Adding GIF to README.md

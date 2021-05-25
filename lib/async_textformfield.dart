@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class AsyncTextFormField extends StatefulWidget {
@@ -11,10 +12,10 @@ class AsyncTextFormField extends StatefulWidget {
   final String valueIsInvalidMessage;
 
   const AsyncTextFormField(
-      {Key key,
-      @required this.validator,
-      @required this.validationDebounce,
-      @required this.controller,
+      {Key? key,
+      required this.validator,
+      required this.validationDebounce,
+      required this.controller,
       this.isValidatingMessage = "please wait for the validation to complete",
       this.valueIsEmptyMessage = 'please enter a value',
       this.valueIsInvalidMessage = 'please enter a valid value',
@@ -26,7 +27,7 @@ class AsyncTextFormField extends StatefulWidget {
 }
 
 class _AsyncTextFormFieldState extends State<AsyncTextFormField> {
-  Timer _debounce;
+  Timer? _debounce;
   var isValidating = false;
   var isValid = false;
   var isDirty = false;
@@ -39,7 +40,7 @@ class _AsyncTextFormFieldState extends State<AsyncTextFormField> {
         if (isValidating) {
           return widget.isValidatingMessage;
         }
-        if (value.isEmpty) {
+        if (value?.isEmpty ?? false) {
           return widget.valueIsEmptyMessage;
         }
         if (!isWaiting && !isValid) {
@@ -71,9 +72,7 @@ class _AsyncTextFormFieldState extends State<AsyncTextFormField> {
       controller: widget.controller,
       maxLines: 1,
       textInputAction: TextInputAction.next,
-      decoration: InputDecoration(
-          suffix: SizedBox(height: 20, width: 20, child: _getSuffixIcon()),
-          hintText: widget.hintText),
+      decoration: InputDecoration(suffix: SizedBox(height: 20, width: 20, child: _getSuffixIcon()), hintText: widget.hintText),
     );
   }
 
@@ -85,7 +84,7 @@ class _AsyncTextFormFieldState extends State<AsyncTextFormField> {
 
   void cancelTimer() {
     if (_debounce?.isActive ?? false) {
-      _debounce.cancel();
+      _debounce?.cancel();
     }
   }
 
