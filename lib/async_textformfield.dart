@@ -117,6 +117,13 @@ class _AsyncTextFormFieldState extends State<AsyncTextFormField> {
   bool isValid = false;
   bool isDirty = false;
   bool isWaiting = false;
+  late String originalValue;
+
+  @override
+  void initState() {
+    originalValue = widget.initialValue ?? widget.controller?.text ?? '';
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -132,6 +139,16 @@ class _AsyncTextFormFieldState extends State<AsyncTextFormField> {
             isValid = msg == null;
             isValidating = false;
             validationMessage = msg;
+          });
+          cancelTimer();
+          return;
+        }
+        if (text == originalValue) {
+          // edited text is same as the original one, the value is valid, no need to validate it
+          setState(() {
+            isValid = true;
+            isValidating = false;
+            validationMessage = null;
           });
           cancelTimer();
           return;
