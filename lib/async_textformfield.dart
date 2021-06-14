@@ -140,6 +140,7 @@ class _AsyncTextFormFieldState extends State<AsyncTextFormField> {
             isValidating = false;
             validationMessage = msg;
           });
+          widget.onChanged?.call(text);
           cancelTimer();
           return;
         }
@@ -150,6 +151,7 @@ class _AsyncTextFormFieldState extends State<AsyncTextFormField> {
             isValidating = false;
             validationMessage = null;
           });
+          widget.onChanged?.call(text);
           cancelTimer();
           return;
         }
@@ -166,8 +168,8 @@ class _AsyncTextFormFieldState extends State<AsyncTextFormField> {
             isValidating = false;
             validationMessage = msg;
           });
+          widget.onChanged?.call(text);
         });
-        widget.onChanged?.call(text);
       },
       controller: widget.controller,
       decoration: decoration,
