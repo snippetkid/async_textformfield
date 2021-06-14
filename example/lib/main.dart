@@ -29,8 +29,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController controller = TextEditingController();
 
-  Future<bool> isValidPasscode(String value) async {
-    return await Future.delayed(Duration(seconds: 2), () => value.isNotEmpty && value.toLowerCase() == 'batman');
+  Future<String?> isValidPasscode(String value) async {
+    return await Future.delayed(Duration(seconds: 2), () => value.isNotEmpty && value.toLowerCase() == 'batman' ? null : 'wrong password');
   }
 
   @override
@@ -43,17 +43,15 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(10.0),
         child: Center(
           child: Form(
-              child: Center(
-            child: AsyncTextFormField(
-              controller: controller,
-              validationDebounce: Duration(milliseconds: 500),
-              validator: isValidPasscode,
-              hintText: 'Enter the Passcode',
-              isValidatingMessage: 'Comparing with the hash from a secure server..',
-              valueIsInvalidMessage: 'Nope, Try harder..',
-              valueIsEmptyMessage: 'No one sets an empty passcode!',
+            child: Center(
+              child: AsyncTextFormField(
+                controller: controller,
+                validationDebounce: Duration(milliseconds: 500),
+                validator: isValidPasscode,
+                decoration: InputDecoration(hintText: 'Enter the Passcode'),
+              ),
             ),
-          )),
+          ),
         ),
       ),
     );
