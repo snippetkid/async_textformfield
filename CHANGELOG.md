@@ -1,3 +1,6 @@
+## 3.0.0
+* Dart 3 Compatibility
+
 ## 2.0.0+3
 
 * Null safety
