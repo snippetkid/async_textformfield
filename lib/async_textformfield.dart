@@ -72,7 +72,9 @@ class _AsyncTextFormFieldState extends State<AsyncTextFormField> {
       controller: widget.controller,
       maxLines: 1,
       textInputAction: TextInputAction.next,
-      decoration: InputDecoration(suffix: SizedBox(height: 20, width: 20, child: _getSuffixIcon()), hintText: widget.hintText),
+      decoration: InputDecoration(
+          suffix: SizedBox(height: 20, width: 20, child: _getSuffixIcon()),
+          hintText: widget.hintText),
     );
   }
 
