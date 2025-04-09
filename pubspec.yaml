@@ -1,6 +1,6 @@
 name: async_textformfield
 description: A Flutter widget that enhances the standard text input field by seamlessly integrating with asynchronous service calls to validate the entered text.
-version: 3.0.0+1
+version: 3.0.1+1
 homepage: https://github.com/snippetkid/async_textformfield
 
 environment:
